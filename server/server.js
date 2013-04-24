@@ -6,6 +6,8 @@ function validateEmail(email)
 
 if (Meteor.isServer) {
   process.env['MAILGUN_API_KEY'] = "key-your-key-here";
+  process.env['MAILGUN_DOMAIN'] = "your-domain.com";
+  process.env['MAILGUN_API_URL'] = "https://api.mailgun.net/v2";
 
   var app = __meteor_bootstrap__.app
   var connect = Npm.require('connect');
@@ -92,7 +94,7 @@ if (Meteor.isServer) {
 
         this.unblock();
 
-        Meteor.http.post('https://api.mailgun.net/v2/domain.mailgun.org/messages', {
+        Meteor.http.post(process.env.MAILGUN_API_URL + '/' + process.env.MAILGUN_DOMAIN + '/messages', {
           auth:"api:" + process.env.MAILGUN_API_KEY,
           params: {"from":"Dev McCool  <you@your-domain.com>",
             "to":[to],
