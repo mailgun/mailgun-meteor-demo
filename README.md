@@ -15,7 +15,7 @@ This sample app demonstrates how to build a simple IP-based geolocation and user
 
 #### Configure
 
-You'll want to open */server/server.js* and update the API key variable with your Mailgun credentials.
+Required: you'll want to open */server/server.js* and update the API credentials/paths with your domain name, API key, etc. Otherwise the call to Mailgun API will fail. 
 
 ---
 
