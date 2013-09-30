@@ -11,11 +11,13 @@ if (Meteor.isServer) {
 
   var app = __meteor_bootstrap__.app
   var connect = Npm.require('connect');
+  var connectRoute = Npm.require('connect-route');
   var Fiber = Npm.require('fibers');
   var crypto = Npm.require('crypto');
 
+  app = connect();
 
-  var router = connect.middleware.router(function(route)
+  var router = connectRoute(function(route)
   {
     route.post('/mailgun/receive', function(req, res)
     {
